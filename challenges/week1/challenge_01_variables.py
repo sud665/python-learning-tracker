@@ -16,10 +16,18 @@ def create_variables():
     - age: 당신의 나이 (정수)
     - height: 당신의 키 (실수)
     - is_student: 학생 여부 (불리언)
-    
     return: 딕셔너리로 반환
     """
-    pass
+    name = "John"
+    age = 20
+    height = 175.5
+    is_student = True
+    return {
+        "name": name,
+        "age": age,
+        "height": height,
+        "is_student": is_student
+    }
 
 def check_types(value):
     """

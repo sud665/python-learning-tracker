@@ -1,7 +1,9 @@
 {
   "completed_challenges": [],
-  "challenge_scores": {},
+  "challenge_scores": {
+    "challenge_01_variables": 50
+  },
   "completion_times": {},
-  "total_score": 0,
-  "last_updated": null
+  "total_score": 50,
+  "last_updated": "2025-12-16T12:56:43.081142"
 }
