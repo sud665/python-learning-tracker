@@ -3,7 +3,9 @@
     "allow": [
       "Bash(mkdir:*)",
       "Bash(python:*)",
-      "Bash(pip3 install:*)"
+      "Bash(pip3 install:*)",
+      "Bash(docker:*)",
+      "Bash(git add:*)"
     ],
     "deny": [],
     "ask": []
