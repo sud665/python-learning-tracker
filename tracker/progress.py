@@ -86,7 +86,7 @@ class ProgressTracker:
     
     def get_progress_summary(self) -> Dict:
         """진행상황 요약을 반환합니다."""
-        total_challenges = 15  # Week1: 10개 + Week2: 5개
+        total_challenges = 21  # Week1: 10개 + Week2: 5개 + Week3: 6개
         completed_count = len(self.progress_data["completed_challenges"])
         
         return {
@@ -104,6 +104,8 @@ class ProgressTracker:
             challenges = [f"challenge_{i:02d}_*" for i in range(1, 11)]
         elif week == 2:
             challenges = [f"challenge_{i:02d}_*" for i in range(11, 16)]
+        elif week == 3:
+            challenges = [f"challenge_{i:02d}_*" for i in range(16, 22)]
         else:
             return {}
         

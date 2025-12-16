@@ -48,10 +48,18 @@ class CLIInterface:
                 ("challenge_13_decorators", "데코레이터"),
                 ("challenge_14_context_manager", "컨텍스트 매니저"),
                 ("challenge_15_type_hints", "타입 힌트")
+            ],
+            3: [
+                ("challenge_16_fastapi_basics", "FastAPI 기초"),
+                ("challenge_17_request_response", "요청/응답 처리"),
+                ("challenge_18_path_query_params", "Path & Query Parameters"),
+                ("challenge_19_request_body", "Request Body & Pydantic"),
+                ("challenge_20_authentication", "인증과 보안"),
+                ("challenge_21_final_project", "최종 프로젝트 (블로그 API)")
             ]
         }
         
-        weeks_to_show = [week] if week else [1, 2]
+        weeks_to_show = [week] if week else [1, 2, 3]
         
         for week_num in weeks_to_show:
             table = Table(title=f"Week {week_num} 챌린지")
@@ -114,7 +122,7 @@ class CLIInterface:
         # 주차별 진행상황
         console.print("\n[bold green]📈 주차별 진행상황[/bold green]\n")
         
-        for week in [1, 2]:
+        for week in [1, 2, 3]:
             week_progress = self.progress_tracker.get_week_progress(week)
             
             week_table = Table(title=f"Week {week}")
@@ -311,7 +319,12 @@ class CLIInterface:
     def _get_week_from_challenge_id(self, challenge_id: str) -> int:
         """챌린지 ID에서 주차를 추출합니다."""
         challenge_num = int(challenge_id.split('_')[1])
-        return 1 if challenge_num <= 10 else 2
+        if challenge_num <= 10:
+            return 1
+        elif challenge_num <= 15:
+            return 2
+        else:
+            return 3
     
     def reset_progress(self):
         """진행상황을 리셋합니다."""

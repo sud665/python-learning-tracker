@@ -79,7 +79,12 @@ class ChallengeValidator:
     def _get_week_from_challenge_id(self, challenge_id: str) -> int:
         """챌린지 ID에서 주차를 추출합니다."""
         challenge_num = int(challenge_id.split('_')[1])
-        return 1 if challenge_num <= 10 else 2
+        if challenge_num <= 10:
+            return 1
+        elif challenge_num <= 15:
+            return 2
+        else:
+            return 3
     
     def _load_module(self, file_path: str, module_name: str):
         """Python 모듈을 동적으로 로드합니다."""
@@ -298,6 +303,11 @@ class ChallengeValidator:
         if week is None or week == 2:
             challenge_names = ["comprehension", "lambda", "decorators", "context_manager", "type_hints"]
             for i, name in enumerate(challenge_names, 11):
+                challenges.append(f"challenge_{i:02d}_{name}")
+        
+        if week is None or week == 3:
+            challenge_names = ["fastapi_basics", "request_response", "path_query_params", "request_body", "authentication", "final_project"]
+            for i, name in enumerate(challenge_names, 16):
                 challenges.append(f"challenge_{i:02d}_{name}")
         
         return challenges

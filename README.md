@@ -1,15 +1,16 @@
 # 🐍 Python Learning Tracker
 
-Python 학습을 위한 인터랙티브 챌린지 도구입니다. 15개의 챌린지를 통해 Python 기초부터 고급 기능까지 단계별로 학습할 수 있습니다.
+Python 학습을 위한 인터랙티브 챌린지 도구입니다. 21개의 챌린지를 통해 Python 기초부터 웹 개발까지 단계별로 학습할 수 있습니다.
 
 ## ✨ 주요 기능
 
-- 📚 **15개의 구조화된 챌린지**: 기초부터 고급까지
+- 📚 **21개의 구조화된 챌린지**: 기초부터 웹 개발까지
 - 🔍 **자동 코드 검증**: pytest 기반 테스트 시스템
 - 📊 **진행상황 추적**: JSON 기반 진행률 관리
 - 💡 **힌트 시스템**: 막힐 때 도움말 제공
 - 📝 **정답 제공**: 완전한 솔루션 코드 확인
 - 🎨 **Rich CLI**: 아름다운 명령줄 인터페이스
+- 🌐 **FastAPI 학습**: 실제 웹 API 개발 경험
 
 ## 🏗️ 프로젝트 구조
 
@@ -21,21 +22,32 @@ python-learning-tracker/
 │   │   ├── challenge_02_functions.py
 │   │   ├── ...
 │   │   └── challenge_10_exceptions.py
-│   └── week2/              # Week 2: Python 고급 (5개)
-│       ├── challenge_11_comprehension.py
-│       ├── challenge_12_lambda.py
+│   ├── week2/              # Week 2: Python 고급 (5개)
+│   │   ├── challenge_11_comprehension.py
+│   │   ├── challenge_12_lambda.py
+│   │   ├── ...
+│   │   └── challenge_15_type_hints.py
+│   └── week3/              # Week 3: FastAPI & 웹 개발 (6개)
+│       ├── challenge_16_fastapi_basics.py
+│       ├── challenge_17_request_response.py
 │       ├── ...
-│       └── challenge_15_type_hints.py
+│       └── challenge_21_final_project.py
 ├── solutions/              # 정답 파일들
 │   ├── week1/
-│   └── week2/
+│   ├── week2/
+│   └── week3/
 ├── tests/                  # 테스트 파일들
 │   ├── test_week1.py
-│   └── test_week2.py
+│   ├── test_week2.py
+│   └── test_week3.py
 ├── tracker/                # 핵심 모듈
 │   ├── progress.py         # 진행상황 관리
 │   ├── validator.py        # 코드 검증
 │   └── cli.py             # CLI 인터페이스
+├── week3_api_server/       # FastAPI 서버 환경
+│   ├── docker-compose.yml  # PostgreSQL 설정
+│   ├── database.py         # DB 연결 설정
+│   └── models.py          # 데이터베이스 모델
 ├── data/                   # 데이터 저장
 │   └── progress.json       # 진행상황 데이터
 ├── main.py                 # CLI 엔트리포인트
@@ -71,21 +83,30 @@ python main.py list
 
 # 특정 주차만 보기
 python main.py list --week 1
+python main.py list --week 3
 
 # 첫 번째 챌린지 테스트
 python main.py check 01
 
+# FastAPI 챌린지 테스트
+python main.py check 16
+
 # 전체 챌린지 테스트
 python main.py check all
+
+# Week 3만 테스트
+python main.py check all --week 3
 
 # 진행상황 확인
 python main.py progress
 
 # 힌트 보기
 python main.py hint 01
+python main.py hint 20
 
 # 정답 보기
 python main.py solution 01
+python main.py solution 21
 
 # 데모 실행
 python main.py demo
@@ -113,6 +134,15 @@ python main.py demo
 13. **decorators**: 데코레이터
 14. **context_manager**: 컨텍스트 매니저
 15. **type_hints**: 타입 힌트
+
+### Week 3: FastAPI & 웹 개발 (6개)
+
+16. **fastapi_basics**: FastAPI 기초와 라우팅
+17. **request_response**: 요청/응답 처리와 HTTP 메서드
+18. **path_query_params**: Path & Query Parameters
+19. **request_body**: Request Body & Pydantic Models
+20. **authentication**: JWT 인증과 보안
+21. **final_project**: 최종 프로젝트 (블로그 API)
 
 ## 🎯 학습 방법
 
@@ -178,6 +208,25 @@ python main.py check all --week 1
 
 # Week 2만 테스트
 python main.py check all --week 2
+
+# Week 3만 테스트 (FastAPI)
+python main.py check all --week 3
+```
+
+### FastAPI 서버 실행
+
+Week 3 챌린지 작업 시:
+
+```bash
+# PostgreSQL 시작 (Docker 필요)
+cd week3_api_server
+docker-compose up -d
+
+# FastAPI 서버 실행 
+uvicorn challenges.week3.challenge_16_fastapi_basics:app --reload --port 8000
+
+# API 문서 확인
+# 브라우저에서 http://localhost:8000/docs 접속
 ```
 
 ### 커스텀 테스트

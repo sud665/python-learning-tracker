@@ -63,7 +63,7 @@ def check(challenge, week):
         if challenge_id:
             interface.check_challenge(challenge_id)
         else:
-            console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-15 사이의 번호를 입력하세요.[/red]")
+            console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-21 사이의 번호를 입력하세요.[/red]")
 
 @cli.command()
 def progress():
@@ -84,7 +84,7 @@ def hint(challenge_num):
         interface = CLIInterface()
         interface.show_hint(challenge_id)
     else:
-        console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-15 사이의 번호를 입력하세요.[/red]")
+        console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-21 사이의 번호를 입력하세요.[/red]")
 
 @cli.command()
 @click.argument('challenge_num', required=True)
@@ -99,7 +99,7 @@ def solution(challenge_num):
         interface = CLIInterface()
         interface.show_solution(challenge_id)
     else:
-        console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-15 사이의 번호를 입력하세요.[/red]")
+        console.print("[red]❌ 잘못된 챌린지 번호입니다. 01-21 사이의 번호를 입력하세요.[/red]")
 
 @cli.command()
 def reset():
@@ -145,21 +145,23 @@ def _convert_to_challenge_id(challenge_num: str) -> str:
     챌린지 번호를 전체 챌린지 ID로 변환합니다.
     
     Args:
-        challenge_num: 챌린지 번호 (예: "01", "1", "15")
+        challenge_num: 챌린지 번호 (예: "01", "1", "21")
         
     Returns:
         전체 챌린지 ID 또는 None
     """
     try:
         num = int(challenge_num)
-        if not (1 <= num <= 15):
+        if not (1 <= num <= 21):
             return None
         
         # 챌린지명 매핑
         challenge_names = {
             1: "variables", 2: "functions", 3: "conditions", 4: "loops", 5: "lists",
             6: "dicts", 7: "classes", 8: "modules", 9: "files", 10: "exceptions",
-            11: "comprehension", 12: "lambda", 13: "decorators", 14: "context_manager", 15: "type_hints"
+            11: "comprehension", 12: "lambda", 13: "decorators", 14: "context_manager", 15: "type_hints",
+            16: "fastapi_basics", 17: "request_response", 18: "path_query_params", 
+            19: "request_body", 20: "authentication", 21: "final_project"
         }
         
         return f"challenge_{num:02d}_{challenge_names[num]}"
