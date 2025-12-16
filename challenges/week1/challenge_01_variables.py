@@ -40,7 +40,15 @@ def check_types(value):
     Returns:
         str: 타입명
     """
-    pass
+    if type(value) == int:
+        return "int"
+    elif type(value) == str:
+        return "str"
+    elif type(value) == float:
+        return "float"
+    elif type(value) == bool:
+        return "bool"
+    
 
 def convert_types():
     """
@@ -49,11 +57,14 @@ def convert_types():
     - 정수 456을 문자열로  
     - 문자열 "3.14"를 실수로
     - 정수 0을 불리언으로
-    
     Returns:
         tuple: (int_val, str_val, float_val, bool_val)
     """
-    pass
+    int_val = int("123")
+    str_val = str(456)
+    float_val = float("3.14")
+    bool_val = bool(0)
+    return (int_val, str_val, float_val, bool_val)
 
 # 자동 테스트용 (수정 금지)
 if __name__ == "__main__":
